@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ Copyright (C) 2013 The Cat Hive Developers.
+ 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.cathive</groupId>
+    <artifactId>x3d</artifactId>
+    <packaging>bundle</packaging>
+    <version>3.3.0.1-SNAPSHOT</version>
+    <name>X3D support for Java</name>
+    <description>X3D integration and model loading for Java</description>
+    <url>https://github.com/cathive/${project.artifactId}/</url>
+    <inceptionYear>2013</inceptionYear>
+
+    <parent>
+        <groupId>com.cathive</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>1</version>
+    </parent>
+
+    <properties/>
+
+    <prerequisites>
+        <maven>3.0.0</maven>
+    </prerequisites>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
+            <comments />
+        </license>
+    </licenses>
+
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/cathive/${project.artifactId}/issues</url>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <id>headcr4sh</id>
+            <name>Benjamin P. Jung</name>
+            <email>headcr4sh@gmail.com</email>
+            <url>http://profiles.google.com/headcr4sh</url>
+            <timezone>Europe/Berlin</timezone>
+            <properties />
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <contributors/>
+
+    <scm>
+        <connection>scm:git:https://github.com/cathive/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:cathive/${project.artifactId}.git</developerConnection>
+        <url>https://github.com/cathive/${project.artifactId}/</url>
+      <tag>HEAD</tag>
+  </scm>
+
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>https://cathive.ci.cloudbees.com/job/${project.artifactId}-integration-build/</url>
+    </ciManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <index>true</index>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>false</addDefaultSpecificationEntries>
+                        </manifest>&gt;
+                    </archive>
+                    <instructions>
+                        <module>com.cathive.x3d</module>
+                        <_exportcontents>
+                            !*.internal.*,
+                            $(module).*;version=${project.version},
+                            org.web3d.x3d;version=3.3
+                        </_exportcontents>
+                        <Import-Package>
+                            javax.xml.bind.annotation.*
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <extension>true</extension>
+                    <schemaFiles>x3d-3.3.xsd</schemaFiles>
+                    <bindingFiles>x3d-3.3.xjb</bindingFiles>
+                </configuration>
+                <!--<dependencies>
+                    <dependency>
+                        <groupId>com.sun.xml.bind</groupId>
+                        <artifactId>jaxb-xjc</artifactId>
+                        <version>2.2.6</version>
+                    </dependency>
+                </dependencies>-->
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>jaxb2-maven-plugin</artifactId>
+                    <version>1.5</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement/>
+
+</project>
