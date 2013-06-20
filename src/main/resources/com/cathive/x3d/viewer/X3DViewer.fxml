@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+<?import java.lang.*?>
+<?import java.lang.Boolean?>
+<?import java.lang.Double?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-preview-i18n-resource X3DViewer.properties?>
+<?scenebuilder-stylesheet css/spaceraccoons.css?>
+
+<fx:root type="javafx.scene.layout.BorderPane" fx:id="rootPane" blendMode="SRC_OVER" minHeight="360.0" minWidth="640.0" prefHeight="720.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.cathive.x3d.viewer.X3DViewer">
+    <fx:define>
+        <Boolean fx:value="false" fx:id="debugFlag" />
+        <Double fx:value="1.7976931348623157E308" fx:id="MAX_VALUE" />
+        <Double fx:value="8.0" fx:id="DEFAULT_SPACING" />
+    </fx:define>
+    <top>
+        <ToolBar fx:id="toolBar">
+            <Button text="%button.open.text"/>
+        </ToolBar>
+    </top>
+</fx:root>

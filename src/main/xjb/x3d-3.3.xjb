@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-               xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
                xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd"
                extensionBindingPrefixes="xjc"
@@ -11,10 +11,10 @@
         <jaxb:globalBindings typesafeEnumMaxMembers="1024">
            <xjc:serializable/>
            <xjc:simple/>
-           <jaxb:serializable uid="33"/>
+           <jaxb:serializable uid="3300"/>
        </jaxb:globalBindings>
         <jaxb:schemaBindings>
-            <jaxb:package name="org.web3d.x3d"/>
+            <jaxb:package name="org.web3d.x3d.version_3_3"/>
         </jaxb:schemaBindings>
         <jaxb:bindings node="./xsd:simpleType[@name='inputOutputAccessTypes']">
             <jaxb:typesafeEnumClass/>

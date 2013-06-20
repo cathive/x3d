@@ -31,10 +31,16 @@
     <parent>
         <groupId>com.cathive</groupId>
         <artifactId>oss-parent</artifactId>
-        <version>1</version>
+        <version>2</version>
     </parent>
 
-    <properties/>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.useIncrementalCompilation>true</maven.compiler.useIncrementalCompilation>
+    </properties>
 
     <prerequisites>
         <maven>3.0.0</maven>
@@ -45,7 +51,7 @@
             <name>Apache License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
             <distribution>repo</distribution>
-            <comments />
+            <comments/>
         </license>
     </licenses>
 
@@ -61,7 +67,7 @@
             <email>headcr4sh@gmail.com</email>
             <url>http://profiles.google.com/headcr4sh</url>
             <timezone>Europe/Berlin</timezone>
-            <properties />
+            <properties/>
             <roles>
                 <role>Developer</role>
             </roles>
@@ -74,8 +80,8 @@
         <connection>scm:git:https://github.com/cathive/${project.artifactId}.git</connection>
         <developerConnection>scm:git:git@github.com:cathive/${project.artifactId}.git</developerConnection>
         <url>https://github.com/cathive/${project.artifactId}/</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <ciManagement>
         <system>Jenkins</system>
@@ -97,17 +103,18 @@
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addDefaultSpecificationEntries>false</addDefaultSpecificationEntries>
-                        </manifest>&gt;
+                        </manifest>
                     </archive>
                     <instructions>
                         <module>com.cathive.x3d</module>
                         <_exportcontents>
                             !*.internal.*,
                             $(module).*;version=${project.version},
-                            org.web3d.x3d;version=3.3
+                            org.web3d.x3d.version_3_3;version=3.3
                         </_exportcontents>
                         <Import-Package>
-                            javax.xml.bind.annotation.*
+                            javafx.*,
+                            javax.xml.bind.*
                         </Import-Package>
                     </instructions>
                 </configuration>
@@ -144,7 +151,7 @@
                     <dependency>
                         <groupId>com.sun.xml.bind</groupId>
                         <artifactId>jaxb-xjc</artifactId>
-                        <version>2.2.6</version>
+                        <version>2.2.7</version>
                     </dependency>
                 </dependencies>-->
             </plugin>
