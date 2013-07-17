@@ -84,8 +84,8 @@
     </scm>
 
     <ciManagement>
-        <system>Jenkins</system>
-        <url>https://cathive.ci.cloudbees.com/job/${project.artifactId}-integration-build/</url>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/cathive/x3d</url>
     </ciManagement>
 
     <build>
