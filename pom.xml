@@ -31,14 +31,14 @@
     <parent>
         <groupId>com.cathive</groupId>
         <artifactId>oss-parent</artifactId>
-        <version>2</version>
+        <version>3</version>
     </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.useIncrementalCompilation>true</maven.compiler.useIncrementalCompilation>
     </properties>
 
@@ -114,7 +114,8 @@
                         </_exportcontents>
                         <Import-Package>
                             javafx.*,
-                            javax.xml.bind.*
+                            javax.xml.bind.*,
+                            com.cathive.fonts.fontawesome.*;version=3.2.1.0
                         </Import-Package>
                     </instructions>
                 </configuration>
@@ -169,12 +170,26 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.cathive.fonts</groupId>
+            <artifactId>fonts-fontawesome</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
-    <dependencyManagement/>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.cathive.fonts</groupId>
+                <artifactId>fonts-fontawesome</artifactId>
+                <version>3.2.1.0</version>
+                <type>jar</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

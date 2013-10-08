@@ -1,25 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?language javascript?>
+<?import com.cathive.fonts.fontawesome.*?>
+<?import com.cathive.fonts.fontawesome.FontAwesomeIconView?>
 <?import java.lang.*?>
 <?import java.lang.Boolean?>
 <?import java.lang.Double?>
+<?import javafx.scene.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.Node?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?scenebuilder-preview-i18n-resource X3DViewer.properties?>
-<?scenebuilder-stylesheet css/spaceraccoons.css?>
+<?scenebuilder-classpath-element ../../../../../../../../fonts-fontawesome/target/classes?>
+<?scenebuilder-preview-i18n-resource Messages.properties?>
+<?scenebuilder-stylesheet X3DViewer.css?>
 
-<fx:root type="javafx.scene.layout.BorderPane" fx:id="rootPane" blendMode="SRC_OVER" minHeight="360.0" minWidth="640.0" prefHeight="720.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.cathive.x3d.viewer.X3DViewer">
-    <fx:define>
-        <Boolean fx:value="false" fx:id="debugFlag" />
-        <Double fx:value="1.7976931348623157E308" fx:id="MAX_VALUE" />
-        <Double fx:value="8.0" fx:id="DEFAULT_SPACING" />
-    </fx:define>
-    <top>
-        <ToolBar fx:id="toolBar">
-            <Button text="%button.open.text"/>
-        </ToolBar>
-    </top>
+<fx:root type="javafx.scene.layout.BorderPane" fx:id="rootPane" blendMode="SRC_OVER" minHeight="360.0" minWidth="640.0" prefHeight="720.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.cathive.x3d.viewer.X3DViewer">
+  <fx:define>
+    <Boolean fx:value="false" fx:id="debugFlag" />
+    <Double fx:value="1.7976931348623157E308" fx:id="MAX_VALUE" />
+    <Double fx:value="8.0" fx:id="DEFAULT_SPACING" />
+  </fx:define>
+  <center>
+    <HBox>
+      <children>
+        <Accordion prefHeight="-1.0" prefWidth="320.0">
+          <expandedPane>
+            <TitledPane fx:id="x1" animated="true" collapsible="false" expanded="true" text="META Information">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <TableView fx:id="x3dHeadMetaTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <columns>
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="128.0" text="Name" fx:id="x3dHeadMetaNameTableColumn" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="173.0" text="Content" fx:id="x3dHeadMetaContentTableColumn" />
+                      </columns>
+                    </TableView>
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+          </expandedPane>
+          <panes>
+            <fx:reference source="x1" />
+          </panes>
+        </Accordion>
+        <Group fx:id="scene" />
+      </children>
+    </HBox>
+  </center>
+  <top>
+    <ToolBar fx:id="toolBar">
+      <Button onAction="#openFile" text="%button.open.text">
+        <graphic>
+          <FontAwesomeIconView icon="ICON_FOLDER_OPEN" />
+        </graphic>
+      </Button>
+    </ToolBar>
+  </top>
 </fx:root>
