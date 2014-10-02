@@ -142,6 +142,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <catalog>src/main/resources/catalog.cat</catalog>
                     <extension>true</extension>
                     <schemaFiles>x3d-3.3.xsd</schemaFiles>
                     <bindingFiles>x3d-3.3.xjb</bindingFiles>

@@ -3,6 +3,26 @@
 <!DOCTYPE catalog PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN"
  "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
 
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
- 
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+         prefer="system"
+         id="x3d-schemas">
+
+  <rewriteSystem systemIdStartString="http://www.web3d.org/specifications/"
+                 rewritePrefix="file://../xsd/"/>
+
+  <public publicId="ISO//Web3D//DTD X3D 3.3//EN"
+          uri="../xsd/x3d-3.3.dtd"/>
+
+  <system systemId="http://www.web3d.org/specifications/x3d-3.3.dtd"
+          uri="../xsd/x3d-3.3.dtd"/>
+
+  <system systemId="http://www.web3d.org/specifications/x3d-3.3.xsd"
+          uri="../xsd/x3d-3.3.xsd"/>
+
+  <system systemId="x3d-3.3-Web3dExtensionsPublic.xsd"
+          uri="../xsd/x3d-3.3-Web3dExtensionsPublic.xsd"/>
+
+  <system systemId="x3d-3.3-Web3dExtensionsPrivate.xsd"
+          uri="../xsd/x3d-3.3-Web3dExtensionsPrivate.xsd"/>
+
 </catalog>
