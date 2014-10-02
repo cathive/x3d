@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+ Copyright (C) 2013-2014 The Cat Hive Developers.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
 <?language javascript?>
 <?import com.cathive.fonts.fontawesome.*?>
 <?import com.cathive.fonts.fontawesome.FontAwesomeIconView?>
@@ -17,7 +33,7 @@
 <?scenebuilder-preview-i18n-resource Messages.properties?>
 <?scenebuilder-stylesheet X3DViewer.css?>
 
-<fx:root type="javafx.scene.layout.BorderPane" fx:id="rootPane" blendMode="SRC_OVER" minHeight="360.0" minWidth="640.0" prefHeight="720.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.cathive.x3d.viewer.X3DViewer">
+<fx:root type="javafx.scene.layout.BorderPane" fx:id="rootPane" blendMode="SRC_OVER" minHeight="360.0" minWidth="640.0" prefHeight="720.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0" fx:controller="com.cathive.x3d.viewer.X3DViewer">
   <fx:define>
     <Boolean fx:value="false" fx:id="debugFlag" />
     <Double fx:value="1.7976931348623157E308" fx:id="MAX_VALUE" />
@@ -28,7 +44,7 @@
       <children>
         <Accordion prefHeight="-1.0" prefWidth="320.0">
           <expandedPane>
-            <TitledPane fx:id="x1" animated="true" collapsible="false" expanded="true" text="META Information">
+            <TitledPane fx:id="x3dHeadMetaInformationPane" animated="true" collapsible="false" expanded="true" text="META Information">
               <content>
                 <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
@@ -44,7 +60,7 @@
             </TitledPane>
           </expandedPane>
           <panes>
-            <fx:reference source="x1" />
+            <fx:reference source="x3dHeadMetaInformationPane"/>
           </panes>
         </Accordion>
         <Group fx:id="scene" />

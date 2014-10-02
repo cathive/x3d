@@ -1,29 +1,20 @@
-package com.cathive.x3d.viewer;
+/*
+ * Copyright (C) 2013-2014 The Cat Hive Developers.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-import com.cathive.x3d.X3DLoader;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.ToolBar;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.shape.MeshView;
-import javafx.stage.FileChooser;
-import javafx.util.Callback;
-import org.web3d.x3d.version_3_3.Meta;
-import org.web3d.x3d.version_3_3.X3D;
+package com.cathive.x3d.viewer;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,6 +24,30 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.web3d.x3d.version_3_3.Meta;
+import org.web3d.x3d.version_3_3.X3D;
+import com.cathive.x3d.X3DException;
+import com.cathive.x3d.X3DLoader;
+
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.ToolBar;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
+import javafx.util.Callback;
 
 /**
  * @author Benjamin P. Jung
@@ -56,6 +71,18 @@ public final class X3DViewer extends BorderPane implements Initializable {
     public X3D getX3dObject() { return this.x3dObject.get(); }
     public void setX3dObject(final X3D x3dObject) { this.x3dObject.set(x3dObject); }
     public ObjectProperty<X3D> x3dObjectProperty() { return this.x3dObject; }
+    {
+        this.x3dObject.bind(Bindings.createObjectBinding(() -> {
+            final File file = this.x3dFile.get();
+            try {
+                final X3D $x3dObject = file == null ? null : this.x3dLoader.loadFromXml(new FileInputStream(file));
+                return $x3dObject;
+            } catch (final X3DException | FileNotFoundException e) {
+                LOGGER.log(Level.WARNING, e.getLocalizedMessage(), e);
+                return null;
+            }
+        }, this.x3dFile));
+    }
 
     private X3DLoader x3dLoader;
 
@@ -113,15 +140,9 @@ public final class X3DViewer extends BorderPane implements Initializable {
 
     @FXML
     public void openFile(final ActionEvent event) {
-        final File _x3dFile = new FileChooser().showOpenDialog(this.getScene().getWindow());
-        if (_x3dFile != null) {
-            try {
-               final X3D _x3dObject = x3dLoader.loadFromXml(new FileInputStream(_x3dFile));
-                this.setX3dFile(_x3dFile);
-                this.setX3dObject(_x3dObject);
-            } catch (final FileNotFoundException e) {
-                LOGGER.log(Level.WARNING, e.getLocalizedMessage(), e);
-            }
+        final File $x3dFile = new FileChooser().showOpenDialog(this.getScene().getWindow());
+        if ($x3dFile != null) {
+            this.setX3dFile($x3dFile);
         }
     }
 
