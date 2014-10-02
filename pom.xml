@@ -31,15 +31,13 @@
     <parent>
         <groupId>com.cathive</groupId>
         <artifactId>oss-parent</artifactId>
-        <version>3</version>
+        <version>7</version>
     </parent>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.useIncrementalCompilation>true</maven.compiler.useIncrementalCompilation>
     </properties>
 
     <prerequisites>
@@ -57,7 +55,7 @@
 
     <issueManagement>
         <system>Github</system>
-        <url>https://github.com/cathive/${project.artifactId}/issues</url>
+        <url>https://github.com/cathive/x3d/issues</url>
     </issueManagement>
 
     <developers>
@@ -77,9 +75,9 @@
     <contributors/>
 
     <scm>
-        <connection>scm:git:https://github.com/cathive/${project.artifactId}.git</connection>
-        <developerConnection>scm:git:git@github.com:cathive/${project.artifactId}.git</developerConnection>
-        <url>https://github.com/cathive/${project.artifactId}/</url>
+        <connection>scm:git:https://github.com/cathive/x3d.git</connection>
+        <developerConnection>scm:git:git@github.com:cathive/x3d.git</developerConnection>
+        <url>https://github.com/cathive/x3d/</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -148,24 +146,8 @@
                     <schemaFiles>x3d-3.3.xsd</schemaFiles>
                     <bindingFiles>x3d-3.3.xjb</bindingFiles>
                 </configuration>
-                <!--<dependencies>
-                    <dependency>
-                        <groupId>com.sun.xml.bind</groupId>
-                        <artifactId>jaxb-xjc</artifactId>
-                        <version>2.2.7</version>
-                    </dependency>
-                </dependencies>-->
             </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>jaxb2-maven-plugin</artifactId>
-                    <version>1.5</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
     <dependencies>
